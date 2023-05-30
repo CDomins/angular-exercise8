@@ -16,8 +16,7 @@ import { BlogListComponent } from './pages/blog-list/blog-list.component';
   imports: [
     CommonModule,
     BlogRoutingModule,
-    ReactiveFormsModule,
-
+    ReactiveFormsModule
   ]
 })
 export class BlogModule { }

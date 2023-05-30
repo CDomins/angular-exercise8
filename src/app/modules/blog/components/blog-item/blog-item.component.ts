@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Blog } from '../../models/blog';
 
 @Component({
@@ -8,14 +8,4 @@ import { Blog } from '../../models/blog';
 })
 export class BlogItemComponent {
   @Input('blogs') blog: Blog | undefined;
-  @Output() editEmitter: EventEmitter<Blog> = new EventEmitter();
-  @Output() deleteEmitter: EventEmitter<Blog> = new EventEmitter();
-
-  edit = (blog: Blog) => {
-    this.editEmitter.emit(blog);
-  };
-
-  delete = (blog: Blog) => {
-    this.deleteEmitter.emit(blog);
-  }
 }

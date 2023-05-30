@@ -1,9 +1,5 @@
 <div>
     Title: {{book?.name}}<br/>
-    <p *ngFor="let author of book?.authors">Author/s:{{author}}</p>
+    <p *ngFor="let author of book?.authors">Authors:{{author}}</p>
     ISBN: {{book?.isbn}}
-    <div *ngIf="book">
-        <button (click)="edit(book)" class="btn btn-info">Edit</button>
-        <button (click)="delete(book)" class="btn btn-danger">Delete</button>
-    </div>
 </div>

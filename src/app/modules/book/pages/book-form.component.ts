@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { BookService } from '../services/book.service';
 import { Book } from '../models/book';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-form',
@@ -20,13 +19,11 @@ export class BookFormComponent {
     authors: ['']
   }
 
-  constructor(private fb: FormBuilder, private books: BookService,
-    private route: ActivatedRoute, private router: Router) {
-
+  constructor(private fb: FormBuilder, private books: BookService) {
     this.bookForm = fb.group({
-      name: this.route.snapshot.queryParams['name'] || '',
-      isbn: this.route.snapshot.queryParams['isbn'] || '',
-      authors: fb.array(this.route.snapshot.queryParams['authors'] || []),
+      name: [''],
+      isbn: [''],
+      authors: fb.array([]),
     })
     this.authorsArray = this.bookForm.controls['authors'] as FormArray
   }
@@ -41,13 +38,12 @@ export class BookFormComponent {
 
   onSubmit = () => {
     if (this.bookForm.valid) {
-        if (this.route.snapshot.queryParams['id']) {
-          this.books.updateBook(this.bookForm.value, this.route.snapshot.queryParams['id'])
-          .subscribe();
-        } else {
-          this.books.createBook(this.bookForm.value).subscribe();
-        }
-        this.router.navigate(['book'])
+        this.book.id = this.books.books.length + 1;
+        this.book.name = this.bookForm.value.name;
+        this.book.isbn = this.bookForm.value.isbn;
+        this.book.authors = this.bookForm.value.authors;
+        this.books.books.push(this.book)
+        this.bookForm.reset();
     }
   }
 }

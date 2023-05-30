@@ -1,8 +1,7 @@
 <div *ngFor="let book of books">
     <app-book-item 
         [books]="book"
-        (editEmitter)="editBook($event)"
-        (deleteEmitter)="delete($event)"
     ></app-book-item>
+    <button (click)="edit(book.id)" class="btn btn-info">Edit</button>
 </div>
 
