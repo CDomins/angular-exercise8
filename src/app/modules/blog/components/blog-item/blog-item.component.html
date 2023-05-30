@@ -1,0 +1,11 @@
+<div>
+    Title: {{blog?.title}}
+    <p>Description: {{blog?.description}}</p>
+    <p>Author: {{blog?.author}}</p>
+    comment/s:<p *ngFor="let comment of blog?.comments"> {{comment}}</p>
+    <div *ngIf="blog">
+        <button (click)="edit(blog)" class="btn btn-info">Edit</button>
+        <button (click)="delete(blog)" class="btn btn-danger">Delete</button>
+    </div>
+    
+</div>

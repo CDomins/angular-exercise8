@@ -1,0 +1,9 @@
+<h1>FETCHED DATA FROM JSON-SERVER</h1>
+<div *ngFor="let blog of blogs">
+    <app-blog-item
+        [blogs]="blog"
+        (editEmitter)="editBlog($event)"
+        (deleteEmitter)="delete($event)"
+    ></app-blog-item>
+    <hr>
+</div>

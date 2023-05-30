@@ -1,0 +1,15 @@
+<div class="container">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        Email : <input type="email" formControlName="email" class="form-control"><br/><br/>
+        Name: <input type="text" formControlName="name" class="form-control"><br/><br/>
+        Bio : <input type="text" formControlName="bio" class="form-control"><br/><br/>
+        Active Status: 
+        <select formControlName="isActive" class="form-control">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <br>
+      <button class="btn btn-info" type="submit">Submit</button>
+    </form>
+  </div>
+  
